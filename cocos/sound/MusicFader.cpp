@@ -40,7 +40,6 @@ void MusicFader::fadeInto(const char* filename, bool loop)
 void MusicFader::fadeIn()
 {
     CCFiniteTimeAction* fadeIn = CCEaseIn::create(CCFadeMusic::actionWithDuration(FADE_TIME, CCFadeMusic::IN), FADE_TIME);
-    
     CCDirector::sharedDirector()->getActionManager()->addAction(fadeIn, getInstance(), false);
 }
 

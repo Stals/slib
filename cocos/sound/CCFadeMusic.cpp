@@ -25,8 +25,6 @@ bool CCFadeMusic::initWithDuration(float duration, Type type)
     return false;
 }
 
-
-
 void CCFadeMusic::update(float time)
 {
     if(fadeType == CCFadeMusic::IN){
