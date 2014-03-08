@@ -1,6 +1,8 @@
 #pragma once
-#include <strstream>
+
 #include <string>
+#include <sstream>
+#include <vector>
 
 class StringExtension{
 public:
@@ -10,4 +12,8 @@ public:
                 sstr << t;
                 return sstr.str();
         }
+    
+    
+    static void split(const std::string &s, char delim, std::vector<std::string> &v);
+    static std::vector<std::string> split(const std::string &s, char delim);
 };
