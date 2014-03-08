@@ -29,10 +29,6 @@ bool CCFadeMusic::initWithDuration(float duration, Type type)
 
 void CCFadeMusic::update(float time)
 {
-    cocos2d::CCLog("volume %f", Sound::getMusicVolume());
-    cocos2d::CCLog("time %f", time);
-
-    
     if(fadeType == CCFadeMusic::IN){
         Sound::setMusicVolume(time);
     }else{

@@ -9,7 +9,6 @@ public:
     
 private:
     MusicFader();
-    ~MusicFader();
     static MusicFader* getInstance();
     
     

@@ -15,11 +15,6 @@ MusicFader::MusicFader()
     CCNode::init();
 }
 
-MusicFader::~MusicFader()
-{
-    int i = 0;
-}
-
 MusicFader* MusicFader::getInstance()
 {
     static MusicFader fader;
