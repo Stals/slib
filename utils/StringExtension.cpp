@@ -15,3 +15,16 @@ std::vector<std::string> StringExtension::split(const std::string &s, char delim
     split(s, delim, elems);
     return elems;
 }
+
+void StringExtension::toLower(std::string &str){
+    for(size_t i = 0; i < str.length(); ++i){
+        str[i] = tolower( str[i] );
+    }
+}
+
+
+std::string StringExtension::toLower(const std::string str)
+{
+    StringExtension::toLower(str);
+    return str;
+}
