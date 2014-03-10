@@ -49,6 +49,18 @@ bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
     return false;
 }
 
+void Button::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+{
+    if(containsTouch(pTouch)){
+        inactive->setVisible(false);
+        pressed->setVisible(true);
+    
+    }else{
+        inactive->setVisible(true);
+        pressed->setVisible(false);
+    }
+}
+
 void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     inactive->setVisible(true);
@@ -61,6 +73,13 @@ void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
         }
     }
 }
+
+void Button::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+{
+    inactive->setVisible(true);
+    pressed->setVisible(false);
+}
+
 
 void Button::onEnter(){
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -350, true);
