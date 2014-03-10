@@ -41,19 +41,7 @@ Button::~Button()
 
 bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
-    CCPoint point = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
-    CCRect rect = this->boundingBox();
-    rect.origin.x -= rect.size.width/2;
-    rect.origin.y -= rect.size.height/2;
-    
-    
-    /*
-     CCLog("%f, %f, %f, %f", rect.origin.x, rect.origin.y,
-     rect.size.width, rect.size.height);
-     CCLog("%f, %f", point.x, point.y);
-     */
-    
-    if(rect.containsPoint(point)){
+    if(containsTouch(pTouch)){
         inactive->setVisible(false);
         pressed->setVisible(true);
         return true;
@@ -66,9 +54,11 @@ void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
     inactive->setVisible(true);
     pressed->setVisible(false);
     
-    if (handler)
-    {
-        handler->call(this);
+    if(containsTouch(pTouch)){
+        if (handler)
+        {
+            handler->call(this);
+        }
     }
 }
 
@@ -79,4 +69,27 @@ void Button::onEnter(){
 void Button::onExit(){
     CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
     CCLayer::onExit();
+}
+
+CCRect Button::getRect()
+{
+    CCRect rect = this->boundingBox();
+    rect.origin.x -= rect.size.width/2;
+    rect.origin.y -= rect.size.height/2;
+    
+    return rect;
+}
+
+bool Button::containsTouch(cocos2d::CCTouch *pTouch)
+{
+    CCPoint point = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
+    CCRect rect = getRect();
+    
+    /*
+     CCLog("%f, %f, %f, %f", rect.origin.x, rect.origin.y,
+     rect.size.width, rect.size.height);
+     CCLog("%f, %f", point.x, point.y);
+     */
+    
+    return rect.containsPoint(point);
 }

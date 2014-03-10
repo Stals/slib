@@ -22,4 +22,7 @@ private:
     Handler* handler;
     
     void init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler);
+    
+    cocos2d::CCRect getRect();
+    bool containsTouch(cocos2d::CCTouch *pTouch);
 };
