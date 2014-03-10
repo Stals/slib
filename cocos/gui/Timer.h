@@ -1,5 +1,7 @@
 #pragma once
-#include "Constants.h"
+
+#include "cocos2d.h"
+using namespace cocos2d;
 
 class TimerSprite : public CCSprite{
 public:

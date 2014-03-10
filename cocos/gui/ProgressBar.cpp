@@ -16,7 +16,7 @@ ProgressBar::ProgressBar(CCSprite* emptyBar, CCSprite* fullBar)
 	autorelease();
 	
 	fuelBar = CCProgressTimer::create(fullBar);
-	fuelBar->setType(CCProgressTimerType::kCCProgressTimerTypeBar);
+	fuelBar->setType(cocos2d::kCCProgressTimerTypeBar);
 	fuelBar->setAnchorPoint(ccp(0.5,0.5));
 	fuelBar->setBarChangeRate(ccp(1,0));
 	fuelBar->setTag(1);                 
