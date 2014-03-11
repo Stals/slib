@@ -5,8 +5,8 @@
 
 class Button :public cocos2d::CCLayer{
 public:
-    Button(const std::string& buttonInactive, const std::string& buttonPressed, Handler* handler);
-    Button(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler);
+    Button(const std::string& buttonInactive, const std::string& buttonPressed, Handler* handler, int priority = -255);
+    Button(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int priority = -255);
     ~Button();
     
     virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
@@ -23,7 +23,9 @@ private:
     
     Handler* handler;
     
-    void init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler);
+    int touchPriority;
+    
+    void init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int touchPriority);
     
     cocos2d::CCRect getRect();
     bool containsTouch(cocos2d::CCTouch *pTouch);

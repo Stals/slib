@@ -2,24 +2,25 @@
 
 using namespace cocos2d;
 
-Button::Button(const std::string& buttonInactive, const std::string& buttonPressed, Handler* handler)
+Button::Button(const std::string& buttonInactive, const std::string& buttonPressed, Handler* handler, int touchPriority)
 {
     init(CCSprite::create(buttonInactive.c_str()),
          CCSprite::create(buttonPressed.c_str()),
-         handler);
+         handler, touchPriority);
 }
 
-Button::Button(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler)
+Button::Button(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int touchPriority)
 {
-    init(buttonInactive, buttonPressed, handler);
+    init(buttonInactive, buttonPressed, handler, touchPriority);
 }
 
 
-void Button::init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler)
+void Button::init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler,  int touchPriority)
 {
     this->handler = handler;
     this->inactive = buttonInactive;
     this->pressed = buttonPressed;
+    this->touchPriority = touchPriority;
     
     CCLayer::init();
     autorelease();
@@ -82,9 +83,10 @@ void Button::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent
 
 
 void Button::onEnter(){
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -350, true);
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, touchPriority, true);
     CCLayer::onEnter();
 }
+
 void Button::onExit(){
     CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
     CCLayer::onExit();
@@ -104,11 +106,11 @@ bool Button::containsTouch(cocos2d::CCTouch *pTouch)
     CCPoint point = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
     CCRect rect = getRect();
     
-    /*
+    
      CCLog("%f, %f, %f, %f", rect.origin.x, rect.origin.y,
      rect.size.width, rect.size.height);
      CCLog("%f, %f", point.x, point.y);
-     */
+    
     
     return rect.containsPoint(point);
 }
