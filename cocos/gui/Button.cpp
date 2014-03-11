@@ -95,6 +95,8 @@ void Button::onExit(){
 CCRect Button::getRect()
 {
     CCRect rect = this->boundingBox();
+    
+    rect.origin = getParent()->convertToWorldSpace(rect.origin);
     rect.origin.x -= rect.size.width/2;
     rect.origin.y -= rect.size.height/2;
     
