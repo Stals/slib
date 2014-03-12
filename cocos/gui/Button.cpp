@@ -109,9 +109,9 @@ bool Button::containsTouch(cocos2d::CCTouch *pTouch)
     CCRect rect = getRect();
     
     
-     CCLog("%f, %f, %f, %f", rect.origin.x, rect.origin.y,
-     rect.size.width, rect.size.height);
-     CCLog("%f, %f", point.x, point.y);
+     //CCLog("%f, %f, %f, %f", rect.origin.x, rect.origin.y,
+     //rect.size.width, rect.size.height);
+     //CCLog("%f, %f", point.x, point.y);
     
     
     return rect.containsPoint(point);
