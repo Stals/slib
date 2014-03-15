@@ -6,6 +6,7 @@
 
 void Sound::playMusic(const char* filename, bool loop)
 {
+    CCLOG("Playing '%s'", filename);
     MusicFader::fadeInto(filename, loop);
 }
 

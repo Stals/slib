@@ -3,7 +3,8 @@
 #include "CCFadeMusic.h"
 #include "Sound.h"
 
-#define FADE_TIME 1.5f // seconds to 0 volume
+#define FADE_OUT 0.5f
+#define FADE_IN 2.5f
 
 std::string MusicFader::newTrack;
 bool MusicFader::loopTrack = false;
@@ -28,7 +29,7 @@ void MusicFader::fadeInto(const char* filename, bool loop)
     
     if(Sound::isMusicPlaying()){
         getInstance()->fadeOut();
-        CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MusicFader::startNew), getInstance(), FADE_TIME, false, FADE_TIME, false);
+        CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MusicFader::startNew), getInstance(), FADE_OUT, false, FADE_OUT, false);
     }else{
     
         Sound::setMusicVolume(0.f);
@@ -39,13 +40,13 @@ void MusicFader::fadeInto(const char* filename, bool loop)
 
 void MusicFader::fadeIn()
 {
-    CCFiniteTimeAction* fadeIn = CCEaseIn::create(CCFadeMusic::actionWithDuration(FADE_TIME, CCFadeMusic::IN), FADE_TIME);
+    CCFiniteTimeAction* fadeIn = CCEaseIn::create(CCFadeMusic::actionWithDuration(FADE_IN, CCFadeMusic::IN), FADE_IN);
     CCDirector::sharedDirector()->getActionManager()->addAction(fadeIn, getInstance(), false);
 }
 
 void MusicFader::fadeOut()
 {
-    CCFiniteTimeAction* fadeOut = CCEaseIn::create(CCFadeMusic::actionWithDuration(FADE_TIME, CCFadeMusic::OUT), FADE_TIME);
+    CCFiniteTimeAction* fadeOut = CCEaseIn::create(CCFadeMusic::actionWithDuration(FADE_OUT, CCFadeMusic::OUT), FADE_OUT);
     CCDirector::sharedDirector()->getActionManager()->addAction(fadeOut, getInstance(), false);
     
 }
