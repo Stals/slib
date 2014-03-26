@@ -17,15 +17,17 @@ public:
     virtual void onEnter();
 	virtual void onExit();
     
+protected:
+    Button();
+    
+    void init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int touchPriority);
+    
 private:
     cocos2d::CCSprite* inactive;
     cocos2d::CCSprite* pressed;
     
     Handler* handler;
-    
     int touchPriority;
-    
-    void init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int touchPriority);
     
     cocos2d::CCRect getRect();
     bool containsTouch(cocos2d::CCTouch *pTouch);

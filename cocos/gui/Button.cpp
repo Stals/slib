@@ -2,6 +2,10 @@
 
 using namespace cocos2d;
 
+Button::Button()
+{
+}
+
 Button::Button(const std::string& buttonInactive, const std::string& buttonPressed, Handler* handler, int touchPriority)
 {
     init(CCSprite::create(buttonInactive.c_str()),
