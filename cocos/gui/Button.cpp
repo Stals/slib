@@ -22,27 +22,44 @@ Button::Button(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPress
 void Button::init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler,  int touchPriority)
 {
     this->handler = handler;
-    this->inactive = buttonInactive;
-    this->pressed = buttonPressed;
     this->touchPriority = touchPriority;
     
     CCLayer::init();
     autorelease();
     setTouchEnabled(true);
-    
-    this->setContentSize(CCSizeMake(inactive->getContentSize().width * inactive->getScaleX(),
-                                    inactive->getContentSize().height * inactive->getScaleY()) );
-    
-    addChild(inactive);
-    addChild(pressed);
 
-    pressed->setVisible(false);
+    setImages(buttonInactive, buttonPressed);
 }
 
 Button::~Button()
 {
     if(handler) delete handler;
 }
+
+void Button::setImages(const std::string& buttonInactive, const std::string& buttonPressed)
+{
+    setImages(CCSprite::create(buttonInactive.c_str()), CCSprite::create(buttonPressed.c_str()));
+}
+
+void Button::setImages(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed)
+{
+    if(inactive)
+        removeChild(inactive);
+    if(pressed)
+        removeChild(pressed);
+    
+    inactive = buttonInactive;
+    pressed = buttonPressed;
+    
+    addChild(inactive);
+    addChild(pressed);
+    
+    pressed->setVisible(false);
+    
+    this->setContentSize(CCSizeMake(inactive->getContentSize().width * inactive->getScaleX(),
+                                    inactive->getContentSize().height * inactive->getScaleY()) );
+}
+
 
 bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {

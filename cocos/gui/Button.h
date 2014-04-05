@@ -9,6 +9,10 @@ public:
     Button(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int priority = -255);
     ~Button();
     
+    // change images after creation (previous will be removed)
+    void setImages(const std::string& buttonInactive, const std::string& buttonPressed);
+    void setImages(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed);
+    
     virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
