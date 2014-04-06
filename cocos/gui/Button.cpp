@@ -28,7 +28,9 @@ void Button::init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPr
     autorelease();
     setTouchEnabled(true);
 
-    setImages(buttonInactive, buttonPressed);
+    if(buttonInactive && buttonPressed){
+        setImages(buttonInactive, buttonPressed);
+    }
 }
 
 Button::~Button()
