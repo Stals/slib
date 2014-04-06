@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class Sound{
 public:
@@ -15,4 +16,17 @@ public:
     static float getEffectVolume();
     
     static bool isMusicPlaying();
+    
+    static void setMusicEnabled(bool enabled);
+    static bool isMusicEnabled();
+    
+    static void setEffectsEnabled(bool enabled);
+    static bool isEffectsEnabled();
+    
+private:
+    static std::string currentMusicFilename;
+    static bool loopCurrentMusic;
+    
+    static bool musicEnabled;
+    static bool effectsEnabled;
 };
