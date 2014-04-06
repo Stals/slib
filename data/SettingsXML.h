@@ -26,4 +26,6 @@ private:
     std::string filepath;
     
     pugi::xml_attribute getAttribute(const std::string& key);
+    // Note: returns existing attribute if was already created
+    pugi::xml_attribute createAttribure(const std::string& key);
 };

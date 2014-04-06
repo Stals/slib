@@ -39,30 +39,17 @@ bool SettingsXML::getString(const std::string& key, const std::string& def)
 
 void SettingsXML::setValue(const std::string& key, bool value)
 {
-    pugi::xml_node node =  doc.child(key.c_str());//
-    if(!node){
-        node = doc.append_child(key.c_str());
-    }
-    node.append_attribute(VALUE) = value;
+    createAttribure(key) = value;
 }
 
 void SettingsXML::setValue(const std::string& key, int value)
 {
-    pugi::xml_node node =  doc.child(key.c_str());//
-    if(!node){
-        node = doc.append_child(key.c_str());
-    }
-    
-    node.append_attribute(VALUE) = value;
+    createAttribure(key) = value;
 }
 
 void SettingsXML::setValue(const std::string& key, const char* value)
 {
-    pugi::xml_node node =  doc.child(key.c_str());//
-    if(!node){
-        node = doc.append_child(key.c_str());
-    }
-    node.append_attribute(VALUE) = value;
+    createAttribure(key) = value;
 }
 
 pugi::xml_attribute SettingsXML::getAttribute(const std::string& key)
@@ -70,3 +57,17 @@ pugi::xml_attribute SettingsXML::getAttribute(const std::string& key)
     pugi::xml_node node = doc.child(key.c_str());
     return node.attribute(VALUE);
 }
+
+pugi::xml_attribute SettingsXML::createAttribure(const std::string& key)
+{
+    pugi::xml_node node =  doc.child(key.c_str());
+    if(!node){
+        node = doc.append_child(key.c_str());
+    }
+    pugi::xml_attribute attr = node.attribute(VALUE);
+    if(!attr){
+        attr = node.append_attribute(VALUE);
+    }
+    return attr;
+}
+
