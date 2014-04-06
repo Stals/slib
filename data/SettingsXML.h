@@ -12,8 +12,8 @@ public:
     ~SettingsXML();
     
     bool getBool(const std::string& key, bool def = false);
-    bool getInt(const std::string& key, int def = 0);
-    bool getString(const std::string& key, const std::string& def = std::string());
+    int getInt(const std::string& key, int def = 0);
+    std::string getString(const std::string& key, const std::string& def = std::string());
     
     void setValue(const std::string& key, bool value);
     void setValue(const std::string& key, int value);

@@ -26,12 +26,12 @@ bool SettingsXML::getBool(const std::string& key, bool def)
     return getAttribute(key).as_bool(def);
 }
 
-bool SettingsXML::getInt(const std::string& key, int def)
+int SettingsXML::getInt(const std::string& key, int def)
 {
     return getAttribute(key).as_int(def);
 }
 
-bool SettingsXML::getString(const std::string& key, const std::string& def)
+std::string SettingsXML::getString(const std::string& key, const std::string& def)
 {
     return getAttribute(key).as_string(def.c_str());
 }
