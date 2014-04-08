@@ -3,15 +3,16 @@
 using namespace cocos2d;
 
 Handler::Handler(cocos2d::CCObject* listener,
-                 cocos2d::SEL_MenuHandler selector):
-    listener(listener), selector(selector)
+                 SEL_CallFuncD selector,
+                 void* data):
+    listener(listener), selector(selector), data(data)
 {
     
 }
 
-void Handler::call(CCObject* obj)
+void Handler::call()
 {
     if(listener && selector){
-        (listener->*selector)(obj);
+        (listener->*selector)(data);
     }
 }

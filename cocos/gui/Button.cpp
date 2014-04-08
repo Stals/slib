@@ -93,7 +93,7 @@ void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
     if(containsTouch(pTouch)){
         if (handler)
         {
-            handler->call(this);
+            handler->call();
         }
     }
 }
