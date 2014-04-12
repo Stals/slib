@@ -2,6 +2,8 @@
 
 #ifndef __APPLE__
 
+#include "cocos2d.h"
+
 std::string FileUtils::getFullPath(const std::string& filename)
 {
 	string path("");
@@ -32,6 +34,10 @@ std::string FileUtils::getFullPath(const std::string& filename)
     path.append(filename);
     
 	return path;
+}
+
+std::string FileUtils::getResoursePath(const std::string& filename){
+    return cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(filename.c_str());
 }
 
 #endif
