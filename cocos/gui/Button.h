@@ -21,6 +21,8 @@ public:
     virtual void onEnter();
 	virtual void onExit();
     
+    void setEnabled(bool enabled);
+    
 protected:
     Button();
     
@@ -32,6 +34,8 @@ private:
     
     Handler* handler;
     int touchPriority;
+    
+    bool enabled;
     
     cocos2d::CCRect getRect();
     bool containsTouch(cocos2d::CCTouch *pTouch);

@@ -23,6 +23,7 @@ void Button::init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPr
 {
     this->handler = handler;
     this->touchPriority = touchPriority;
+    this->enabled = true;
     
     CCLayer::init();
     autorelease();
@@ -128,9 +129,10 @@ CCRect Button::getRect()
 
 bool Button::containsTouch(cocos2d::CCTouch *pTouch)
 {
+    if(!enabled) return false;
+    
     CCPoint point = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
     CCRect rect = getRect();
-    
     
      //CCLog("%f, %f, %f, %f", rect.origin.x, rect.origin.y,
      //rect.size.width, rect.size.height);
@@ -138,4 +140,9 @@ bool Button::containsTouch(cocos2d::CCTouch *pTouch)
     
     
     return rect.containsPoint(point);
+}
+
+void Button::setEnabled(bool enabled)
+{
+    this->enabled = enabled;
 }
