@@ -84,3 +84,8 @@ bool Sound::isEffectsEnabled()
 {
     return effectsEnabled;
 }
+
+void Sound::preloadEffect(const char* filename)
+{
+	ENGINE->preloadEffect(filename);
+}

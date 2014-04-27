@@ -22,6 +22,8 @@ public:
     
     static void setEffectsEnabled(bool enabled);
     static bool isEffectsEnabled();
+
+	static void preloadEffect(const char* filename);
     
 private:
     static std::string currentMusicFilename;
