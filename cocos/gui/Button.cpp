@@ -66,6 +66,10 @@ void Button::setImages(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* but
 
 bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
+	if(!isVisible()){
+		return false;
+	}
+
     if(containsTouch(pTouch)){
         inactive->setVisible(false);
         pressed->setVisible(true);
