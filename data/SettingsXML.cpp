@@ -36,6 +36,10 @@ std::string SettingsXML::getString(const std::string& key, const std::string& de
     return getAttribute(key).as_string(def.c_str());
 }
 
+float SettingsXML::getFloat(const std::string& key, float def)
+{
+	return getAttribute(key).as_float(def);
+}
 
 void SettingsXML::setValue(const std::string& key, bool value)
 {
@@ -51,6 +55,12 @@ void SettingsXML::setValue(const std::string& key, const char* value)
 {
     createAttribure(key) = value;
 }
+
+void SettingsXML::setValue(const std::string& key, float value)
+{
+	createAttribure(key) = value;
+}
+
 
 pugi::xml_attribute SettingsXML::getAttribute(const std::string& key)
 {

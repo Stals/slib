@@ -14,11 +14,12 @@ public:
     bool getBool(const std::string& key, bool def = false);
     int getInt(const std::string& key, int def = 0);
     std::string getString(const std::string& key, const std::string& def = std::string());
+	float getFloat(const std::string& key, float def = 0);
     
     void setValue(const std::string& key, bool value);
     void setValue(const std::string& key, int value);
     void setValue(const std::string& key, const char* value);
-    
+	void setValue(const std::string& key, float value);
     void save();
     
 private:
