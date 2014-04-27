@@ -22,6 +22,8 @@ public:
 	virtual void onExit();
     
     void setEnabled(bool enabled);
+
+	virtual void setOpacity(GLubyte opacity);
     
 protected:
     Button();

@@ -150,3 +150,9 @@ void Button::setEnabled(bool enabled)
 {
     this->enabled = enabled;
 }
+
+void Button::setOpacity(GLubyte opacity)
+{
+	this->pressed->setOpacity(opacity);
+	this->inactive->setOpacity(opacity);
+}
