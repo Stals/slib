@@ -25,13 +25,13 @@ public:
     
 protected:
     Button();
+
+	cocos2d::CCSprite* inactive;
+    cocos2d::CCSprite* pressed;
     
     void init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int touchPriority);
     
-private:
-    cocos2d::CCSprite* inactive;
-    cocos2d::CCSprite* pressed;
-    
+private:    
     Handler* handler;
     int touchPriority;
     
