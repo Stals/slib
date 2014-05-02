@@ -3,8 +3,8 @@
 ProgressBar::ProgressBar(CCSprite* emptyBar, CCSprite* fullBar)
 {
 	CCSprite::init();
-	//setContentSize(emptyBar->getContentSize());
-	//this->setAnchorPoint(ccp(0,0.5));
+	setContentSize(emptyBar->getContentSize());
+	this->setAnchorPoint(ccp(0, 0));
 	
 	
 	this->addChild(emptyBar);
