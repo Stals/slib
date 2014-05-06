@@ -1,6 +1,6 @@
 #include "FileUtils.h"
 
-#ifndef __APPLE__
+#if defined(MARMALADE) || !defined(__APPLE__)
 
 #include "cocos2d.h"
 
