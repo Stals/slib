@@ -3,7 +3,11 @@
 ProgressBar::ProgressBar(CCSprite* emptyBar, CCSprite* fullBar)
 {
 	CCSprite::init();
-	setContentSize(emptyBar->getContentSize());
+	CCSize size = emptyBar->getContentSize();
+	size.width *= emptyBar->getScaleX();
+	size.height *= emptyBar->getScaleY();
+
+	setContentSize(size);
 	this->setAnchorPoint(ccp(0, 0));
 	
 	
@@ -16,6 +20,8 @@ ProgressBar::ProgressBar(CCSprite* emptyBar, CCSprite* fullBar)
 	autorelease();
 	
 	fuelBar = CCProgressTimer::create(fullBar);
+	fuelBar->setScale(fullBar->getScale());
+
 	fuelBar->setType(cocos2d::kCCProgressTimerTypeBar);
 	fuelBar->setAnchorPoint(ccp(0.5, 0.5));
 	fuelBar->setBarChangeRate(ccp(1,0));

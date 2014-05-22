@@ -10,7 +10,7 @@ public:
 
 	void setPercent(float percent);
 
-private:
+protected:
 	CCProgressTimer*  fuelBar; 
 };
 
