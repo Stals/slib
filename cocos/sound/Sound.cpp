@@ -78,6 +78,12 @@ bool Sound::isMusicEnabled()
 void Sound::setEffectsEnabled(bool enabled)
 {
     effectsEnabled = enabled;
+
+	if(!enabled){
+		ENGINE->pauseAllEffects();
+	}else{
+		ENGINE->resumeAllEffects();
+	}
 }
 
 bool Sound::isEffectsEnabled()
