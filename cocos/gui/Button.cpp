@@ -74,8 +74,10 @@ bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 	}
 
     if(containsTouch(pTouch)){
-        inactive->setVisible(false);
-        pressed->setVisible(true);
+		if(hasImages()){
+			inactive->setVisible(false);
+			pressed->setVisible(true);
+		}
         return true;
     }
     return false;
@@ -83,6 +85,10 @@ bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 
 void Button::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
+	if(!hasImages()){
+		return;
+	}
+
     if(containsTouch(pTouch)){
         inactive->setVisible(false);
         pressed->setVisible(true);
@@ -95,9 +101,10 @@ void Button::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 
 void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
-    inactive->setVisible(true);
-    pressed->setVisible(false);
-    
+	if(hasImages()){
+		inactive->setVisible(true);
+		pressed->setVisible(false);
+	}
     if(containsTouch(pTouch)){
         if (handler)
         {
@@ -108,8 +115,10 @@ void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 
 void Button::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
-    inactive->setVisible(true);
-    pressed->setVisible(false);
+	if(hasImages()){
+		inactive->setVisible(true);
+		pressed->setVisible(false);
+	}
 }
 
 
@@ -158,4 +167,9 @@ void Button::setOpacity(GLubyte opacity)
 {
 	this->pressed->setOpacity(opacity);
 	this->inactive->setOpacity(opacity);
+}
+
+bool Button::hasImages()
+{
+	return pressed && inactive;
 }

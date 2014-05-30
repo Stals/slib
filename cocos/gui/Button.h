@@ -32,6 +32,8 @@ protected:
     cocos2d::CCSprite* pressed;
     
     void init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler, int touchPriority);
+
+	bool hasImages();
     
 private:    
     Handler* handler;
