@@ -21,6 +21,9 @@ Button::Button(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPress
 
 void Button::init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPressed, Handler* handler,  int touchPriority)
 {
+	inactive = 0;
+	pressed = 0;
+
     this->handler = handler;
     this->touchPriority = touchPriority;
     this->enabled = true;
