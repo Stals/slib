@@ -23,6 +23,7 @@ void Button::init(cocos2d::CCSprite* buttonInactive, cocos2d::CCSprite* buttonPr
 {
 	inactive = 0;
 	pressed = 0;
+    extraTouchSize = CCSizeZero;
 
     this->handler = handler;
     this->touchPriority = touchPriority;
@@ -149,11 +150,15 @@ bool Button::containsTouch(cocos2d::CCTouch *pTouch)
     
     CCPoint point = CCDirector::sharedDirector()->convertToGL(pTouch->getLocationInView());
     CCRect rect = getRect();
+    rect.origin.x -= (extraTouchSize.width / 2);
+    rect.origin.y -= (extraTouchSize.height / 2);
+    
+    rect.size.width += extraTouchSize.width;
+    rect.size.height += extraTouchSize.height;
     
      //CCLog("%f, %f, %f, %f", rect.origin.x, rect.origin.y,
      //rect.size.width, rect.size.height);
      //CCLog("%f, %f", point.x, point.y);
-    
     
     return rect.containsPoint(point);
 }
@@ -172,4 +177,9 @@ void Button::setOpacity(GLubyte opacity)
 bool Button::hasImages()
 {
 	return pressed && inactive;
+}
+
+void Button::setExtraTouchSize(const cocos2d::CCSize& size)
+{
+    extraTouchSize = size;
 }

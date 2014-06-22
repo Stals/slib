@@ -24,6 +24,7 @@ public:
     void setEnabled(bool enabled);
 
 	virtual void setOpacity(GLubyte opacity);
+    void setExtraTouchSize(const cocos2d::CCSize& size);
     
 protected:
     Button();
@@ -40,6 +41,7 @@ private:
     int touchPriority;
     
     bool enabled;
+    cocos2d::CCSize extraTouchSize;
     
     cocos2d::CCRect getRect();
     bool containsTouch(cocos2d::CCTouch *pTouch);
