@@ -28,3 +28,12 @@ std::string StringExtension::toLower(const std::string str)
     StringExtension::toLower(str);
     return str;
 }
+
+int StringExtension::toInt(const std::string& str)
+{
+	return atoi(str.c_str());
+}
+
+float StringExtension::toFloat(const std::string& str){
+	return strtof(str.c_str(), 0);
+}

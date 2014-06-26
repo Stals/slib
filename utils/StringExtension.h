@@ -6,13 +6,15 @@
 
 class StringExtension{
 public:
-        template <class T>
-        static std::string toString(const T& t){
-                std::stringstream sstr;
-                sstr << t;
-                return sstr.str();
-        }
-    
+    template <class T>
+    static std::string toString(const T& t){
+            std::stringstream sstr;
+            sstr << t;
+            return sstr.str();
+    }
+
+	static int toInt(const std::string& str);
+	static float toFloat(const std::string& str);     
     
     static void split(const std::string &s, char delim, std::vector<std::string> &v);
     static std::vector<std::string> split(const std::string &s, char delim);
