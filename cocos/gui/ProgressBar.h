@@ -11,6 +11,6 @@ public:
 	void setPercent(float percent);
 
 protected:
-	CCProgressTimer*  fuelBar; 
+	CCProgressTimer*  progressBar; 
 };
 

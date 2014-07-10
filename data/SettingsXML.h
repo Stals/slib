@@ -5,7 +5,7 @@
 #include "../thirdparty/pugi/pugixml.hpp"
 
 // allows storing key value data in XML formatted file
-
+// Note: call save() after changing values to change it on disk
 class SettingsXML{
 public:
     SettingsXML(const std::string& filename);
