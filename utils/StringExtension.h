@@ -21,4 +21,6 @@ public:
     
     void toLower(std::string& str);
     std::string toLower(const std::string str);
+
+    static std::string concat(const std::string& first, const std::string& second);
 };

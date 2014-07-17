@@ -38,3 +38,8 @@ float StringExtension::toFloat(const std::string& str)
 {
 	return strtof(str.c_str(), 0);
 }
+
+std::string StringExtension::concat(const std::string& first, const std::string& second)
+{
+    return std::string(first).append(second);
+}
