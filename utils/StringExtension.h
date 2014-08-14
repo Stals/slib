@@ -23,4 +23,9 @@ public:
     std::string toLower(const std::string str);
 
     static std::string concat(const std::string& first, const std::string& second);
+
+    std::string replace(std::string subject, const std::string& search,
+                          const std::string& replace);
+    void replaceInPlace(std::string& subject, const std::string& search,
+                          const std::string& replace);
 };
